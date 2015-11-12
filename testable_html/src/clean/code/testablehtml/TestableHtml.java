@@ -48,22 +48,18 @@ public class TestableHtml {
         }
 
         private void includeSetUps(WikiPage wikiPage) throws Exception {
-            if (isTestPage()) {
-                String setupStatement = "!include -setup .";
-                if (includeSuiteSetup) {
-                    stringBuilder.append(includePage(wikiPage, setupStatement, SuiteResponder.SUITE_SETUP_NAME));
-                }
-                stringBuilder.append(includePage(wikiPage, setupStatement, "SetUp"));
+            String setupStatement = "!include -setup .";
+            if (includeSuiteSetup) {
+                stringBuilder.append(includePage(wikiPage, setupStatement, SuiteResponder.SUITE_SETUP_NAME));
             }
+            stringBuilder.append(includePage(wikiPage, setupStatement, "SetUp"));
         }
 
         private void includeTearDowns(WikiPage wikiPage) throws Exception {
-            if (isTestPage()) {
-                String tearDownStatement = "!include -teardown .";
-                stringBuilder.append(includePage(wikiPage, tearDownStatement, "TearDown"));
-                if (includeSuiteSetup) {
-                    stringBuilder.append(includePage(wikiPage, tearDownStatement, SuiteResponder.SUITE_TEARDOWN_NAME));
-                }
+            String tearDownStatement = "!include -teardown .";
+            stringBuilder.append(includePage(wikiPage, tearDownStatement, "TearDown"));
+            if (includeSuiteSetup) {
+                stringBuilder.append(includePage(wikiPage, tearDownStatement, SuiteResponder.SUITE_TEARDOWN_NAME));
             }
         }
 
