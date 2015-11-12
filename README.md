@@ -1,1 +1,2 @@
-# clean_code
+practicing writing clean code and refactoring
+
